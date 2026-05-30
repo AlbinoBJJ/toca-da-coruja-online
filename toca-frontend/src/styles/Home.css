@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Toca da Coruja - Estilização da Home Screen
+   Versão: 1.0
+   Descrição: Centraliza o reset global e o mapeamento responsivo dos triggers.
+   ========================================================================== */
+
+/* Container Principal do Web App (O "Grid" Travado) */
+.home-viewport {
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a0d2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Espelho Proporcional 16:9 Adaptável */
+.home-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 177.78vh;
+  max-height: 56.25vw;
+  background-image: url("/home-hero.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Classe Base Universal para os Triggers Invisíveis */
+.trigger-btn {
+  position: absolute;
+  width: 12.5%;
+  height: 6.6%;
+  left: 6.4%;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Customizações de Coordenadas e Ângulos Específicos */
+.trigger-aprenda {
+  top: 63%;
+  background-color: rgba(88, 32, 192, 0);
+  transform: rotate(4deg);
+}
+
+.trigger-pratique {
+  top: 72%;
+  background-color: rgba(5, 48, 240, 0);
+  transform: rotate(1deg);
+}
+
+.trigger-jogue {
+  top: 81%;
+  background-color: rgba(35, 180, 71, 0);
+  transform: rotate(-2deg);
+}

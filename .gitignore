@@ -1,0 +1,17 @@
+# Node / React (Dependências pesadas e builds)
+toca-frontend/node_modules/
+toca-frontend/dist/
+toca-frontend/.vite/
+.eslintcache
+
+# Python / Django (Ambiente virtual e caches)
+toca-backend/venv/
+toca-backend/ENV/
+toca-backend/__pycache__/
+toca-backend/*.pyc
+toca-backend/db.sqlite3
+
+# Arquivos do Sistema Operacional / IDE
+.DS_Store
+Thumbs.db
+.vscode/
