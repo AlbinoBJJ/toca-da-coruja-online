@@ -1,12 +1,20 @@
-🦉 Toca da Coruja - Documento de Engenharia & Lore v1.4
+Perfeito, Lucas! Vamos atualizar o nosso arquivo .md de especificação para registrar essa guinada fantástica na arquitetura (Custo Zero, Google Planilhas, Stockfish local e interpretação pedagógica com IA). Como você pediu, nada de cuspir código de implementação ainda. Vamos primeiro atualizar a nossa Bíblia do projeto e, logo em seguida, dar o pontapé inicial na nossa máquina de estados do React.
+
+Aqui está o seu arquivo de documentação totalmente atualizado e revisado. Copie e salve por cima do seu toca-da-coruja-arquitetura.md:
+
+🦉 Toca da Coruja - Documento de Engenharia & Lore v1.5
 Este documento é o Guia Supremo de Desenvolvimento. Ele une a arquitetura técnica do software com o progresso atual do projeto, o enredo lúdico (Lore) e as regras específicas dos minijogos.
 
-🏗️ 1. Decisão de Arquitetura
-Front-end: React (Gerenciado via Vite)
+🏗️ 1. Decisão de Arquitetura (Estratégia Serverless / Custo Zero)
+Front-end: React (Gerenciado via Vite) hospedado publicamente no GitHub Pages.
 
-Back-end: Django REST Framework (API) - Adiado para a Fase de Sincronização
+Back-end & Banco de Dados: Google Planilhas (Google Sheets) via Google Apps Script (Ambiente JavaScript seguro e isolado, operando como API REST sem custos de servidor).
 
-Banco de Dados: PostgreSQL (Nuvem) / LocalStorage & IndexedDB (Modo Offline)
+Mecanismo de Análise Técnica: Engine Stockfish.js rodando 100% no lado do cliente (Client-side Web Workers) para validação matemática de erros e acertos táticos sem onerar processamento em nuvem.
+
+Camada de Interpretação Pedagógica: API de IA (OpenAI/Anthropic) consumida de forma segura via Apps Script para traduzir relatórios brutos do Stockfish em balões de diálogos lúdicos da professora Coruja.
+
+Persistência de Dados Local: LocalStorage & IndexedDB para salvamento imediato do estado do jogo (Modo Offline), evitando travamentos de interface e despachando os pacotes para a planilha em segundo plano.
 
 📐 2. Diretrizes Estritas de UI/UX e Código Clean
 Orientação Exclusiva: O Web App é travado e projetado exclusivamente para o modo Landscape (Horizontal), tanto para Desktop quanto para Mobile.
@@ -17,42 +25,55 @@ Dimensionamento: O aplicativo deve rodar em uma proporção de tela cheia fixa (
 
 Segregação de Responsabilidades: Arquivos JSX devem conter apenas estruturas lógicas e marcação operacional. Toda e qualquer estilização visual deve residir em arquivos .css isolados dentro do diretório de estilos, proibindo o uso de propriedades de estilo inline no React.
 
-📂 3. Estrutura de Diretórios Atualizada
-Toca-da-Coruja-Raiz/
-├── toca-backend/         # Ecossistema Django (API - Pausado)
-│   ├── venv/             # Ambiente Virtual Python
-│   ├── setup/            # Configurações centrais do Django
-│   └── manage.py         # Utilitário do Django
-└── toca-frontend/        # Ecossistema React (Vite - ATIVO)
-├── node_modules/     # Dependências do JavaScript
-├── public/           # Ativos estáticos globais (Imagens da Home aqui)
-├── src/              # Componentes e lógica do React
-│   ├── styles/       # Camada de estilização isolada (Home.css)
-│   ├── App.jsx       # Componente estrutural limpo
-│   └── main.jsx      # Inicializador do ecossistema
-└── index.html        # Ponto de ancoragem do Front-end
+Segurança e Privacidade Infantil: É terminantemente proibido coletar ou armazenar nomes reais, e-mails ou dados sensíveis de identificação. O sistema operará estritamente através de apelidos lúdicos e chaves codificadas (id_usuario).
 
+📂 3. Estrutura de Diretórios Atualizada
+Plaintext
+Toca-da-Coruja-Raiz/
+├── toca-backend/         # Ecossistema Django (API - Pausado/Substituído pelo Sheets)
+├── toca-frontend/        # Ecossistema React (Vite - ATIVO)
+│   ├── node_modules/     # Dependências do JavaScript
+│   ├── public/           # Ativos estáticos globais (Imagens da Home aqui)
+│   ├── src/              # Componentes e lógica do React
+│   │   ├── styles/       # Camada de estilização isolada (Home.css)
+│   │   ├── App.jsx       # Componente estrutural limpo e máquina de estados
+│   │   └── main.jsx      # Inicializador do ecossistema
+│   └── index.html        # Ponto de ancoragem do Front-end
+├── assets/               # Pasta de build de produção do GH Pages (Raiz)
+├── index.html            # Arquivo de produção do GH Pages (Raiz)
+└── home-hero.png         # Imagem de produção do GH Pages (Raiz)
 🧭 4. Diário de Bordo do Projeto (Status de Desenvolvimento)
 ✅ Concluído (O que já fizemos):
-Definição de Escopo: Migração estratégica de JS Vanilla para React para suportar a complexidade do estado dos minijogos.
+Setup e Limpeza de Ambiente: Estruturação isolada do ecossistema React via Vite.
 
-Setup do Ambiente: Criação das pastas isoladas do projeto, inicialização do ecossistema React via Vite e criação do ambiente virtual Python com Django instalado.
+Refatoração para Clean Architecture: Isolamento da física e do mapeamento de cliques do CSS (Home.css) da lógica do componente React (App.jsx), com reset estrutural que sanou as micro-barras de rolagem.
 
-Refatoração para Clean Architecture: Criação da pasta de estilos separada, isolando a física e mapeamento de cliques do CSS (Home.css) da lógica do componente React (App.jsx), eliminando as micro-barras de rolagem residuais do navegador através de reset estrutural global.
+Deploy Contínuo: Configuração do repositório remoto no GitHub e publicação bem-sucedida do MVP na nuvem através do GitHub Pages.
+
+Pivotação de Infraestrutura (Custo R$ 0): Substituição do servidor tradicional (Django/PostgreSQL) pelo modelo Serverless usando Google Planilhas (via Apps Script) integrado ao processamento local do Stockfish.js.
 
 ⏳ Em Andamento (O que estamos fazendo AGORA):
-Definição da Máquina de Estados: Preparação da lógica reativa do React para permitir a transição suave de telas sem reload do navegador.
+Gerenciador de Telas: Implementação do controle de estados no App.jsx para transição reativa (Home -> Prólogo).
 
 📋 Próximos Passos (O que faremos a seguir):
-Implementar o gerenciador de estado de telas (useState) para transição entre Home e Prólogo.
+Criar a interface e a estrutura de vetores de diálogos para a apresentação narrativa da Coruja Kaburé-Iwa (Prólogo).
 
-Criar a interface de caixa de diálogos para a apresentação narrativa da Coruja Kaburé-Iwa.
+Mapear o script de integração com as 4 abas do Google Planilhas (cadastro_usuarios, progresso_fases, historico_atividades, historico_partidas_ia).
 
-Desenhar a trilha/estrada em zigue-zague com exercícios de pintura tática (linhas, colunas, diagonais) e o mini jogo de coordenadas no estilo Lichess.
+Desenhar a estrada em zigue-zague com exercícios de pintura tática e o mini jogo de coordenadas.
 
-Implementar o motor visual do primeiro mini jogo customizado (Sumô dos Reis).
+Acoplar o motor do Stockfish.js no motor visual do Sumô dos Reis.
 
-📚 5. Enredo Lúdico (Lore) e Fluxo Pedagógico
+📊 5. Modelagem do Banco de Dados Relacional (Google Sheets)
+Aba 1: cadastro_usuarios -> Armazena id_usuario, apelido lúdico, data_cadastro e dispositivo.
+
+Aba 2: progresso_fases -> Estado persistente do "Save Game" (id_usuario, fase_atual, passo_atual, ultima_atualizacao).
+
+Aba 3: historico_atividades -> Registro geral de métricas de quebra-cabeças (categoria, id_activity, resultado, pontuacao, tempo_segundos, erros_cometidos).
+
+Aba 4: historico_partidas_ia -> O diário tático do jogador (id_partida, historico_lances em PGN, analise_stockfish bruta e o feedback_pedagogico_ia).
+
+📚 6. Enredo Lúdico (Lore) e Fluxo Pedagógico
 🎬 Prólogo: O Chamado na Estrada
 A jornada começa com a apresentação da nossa professora, a coruja Kaburé-Iwa. Ela surge para o jogador com uma missão urgente: ir até o castelo do rei para descobrir o que aconteceu por lá. No caminho, ela introduz o xadrez utilizando como base metodológica a literatura de Xadrez para Todos (James Mann de Toledo e Juliana Kyoko Kamada).
 
@@ -63,40 +84,14 @@ Exercícios Didáticos: Reconhecimento espacial através de desafios práticos i
 
 Treino de Coordenadas: Um minijogo de velocidade baseado no sistema de coordenadas do Lichess.org ("Caça às Casas") para fixar os endereços das 64 casas.
 
-🎮 6. Especificações de Minijogos Customizados (Motores Próprios)
-Estes jogos possuem regras que fogem do xadrez tradicional, logo, suas engines de validação de jogadas serão programadas de forma customizada em componentes do React, sem depender de engines externas como o Stockfish.
-
+🎮 7. Especificações de Minijogos Customizados (Motores Próprios + Engine)
 🐻 Minijogo 1: O Sumô dos Reis (Oposição e Movimento do Rei)
-Contexto: Ao chegar ao castelo, o jogador descobre que o Rei disappeared e o local foi tomado por um Ogro Invasor. Para empurrá-lo de volta para a floresta, o jogador deve enfrentá-lo em um duelo de reis.
+Mecânica: Ambos os lados controlam apenas a peça do Rei. O objetivo é ganhar a Oposição (forçar o recuo do adversário).
 
-Mecânica de Aprendizado: Kaburé-Iwa ensina os movimentos básicos do Rei, a impossibilidade de um Rei encostar no outro (pois o Ogro atacará) e o conceito técnico de oposição.
+Integração Híbrida: O Stockfish analisa a precisão posicional do Rei do jogador a cada lance. Se houver desvio tático, a linha de erro é capturada e enviada para a IA traduzir pedagogicamente na voz da Coruja.
 
-Regras da Engine Customizada:
-
-Ambos os lados controlam apenas a peça do Rei.
-
-O objetivo é ganhar a Oposição (ficar posicionado diretamente em frente ao Rei do adversário com uma casa de distância, forçando-o a ceder espaço).
-
-Toda vez que o jogador ganha a oposição, o Ogro se abala psicologicamente.
-
-O abalo do Ogro aumenta drasticamente a probabilidade de a IA recuar em direção à borda do tabuleiro (a floresta).
-
-Vitória do jogador ao empurrar o Ogro para fora dos limites do tabuleiro.
-
-📋 Futuros Minijogos Planejados (Lógicas a detalhar):
-Jogo de Marcação do Rei.
-
-Jogo de Marcação do Rei com Tabuleiro Reduzido.
-
-Jogo de Sentar no Trono.
-
-🛠️ 7. Comandos Úteis de Inicialização (Arquivo de Consulta)
+🛠️ 8. Comandos Úteis de Inicialização
 Iniciar o Front-end React (Terminal 1)
 Bash
 cd toca-frontend
 npm run dev
-Ativar o Back-end Django (Terminal 2)
-Bash
-cd toca-backend
-.\venv\Scripts\activate
-python manage.py runserver
