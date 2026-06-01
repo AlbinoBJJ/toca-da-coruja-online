@@ -60,3 +60,43 @@
   background-color: rgba(35, 180, 71, 0);
   transform: rotate(-2deg);
 }
+
+/* Botão de Fechar da Sidebar */
+.sidebar-close-btn {
+  position: absolute;
+  top: 2vh;
+  right: 2vh;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.sidebar-close-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Fundo escuro atrás da sidebar para dar foco e permitir o clique de saída */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  display: flex;
+}
+
+.sidebar-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.pergaminho-sidebar {
+  position: relative;
+  z-index: 1000;
+  /* Mantenha suas estilizações de tamanho, fundo de pergaminho, etc. aqui */
+}

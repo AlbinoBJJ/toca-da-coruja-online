@@ -1,27 +1,27 @@
 /* ==========================================================================
-   Toca da Coruja - Estilização do Prólogo
-   Versão: 1.0
-   Descrição: Controla o layout horizontal, posicionamento do sprite da coruja,
-              caixa de diálogo estilo papiro e animações de transição.
+   Toca da Coruja - Estilização Unificada do Prólogo e Lições
+   Versão: 2.0
+   Descrição: Organização semântica do ambiente horizontal, HUD de rotas,
+              caixas de diálogo em formato rodapé RPG e mecânicas visuais.
    ========================================================================== */
 
-/* Container de Transição do Prólogo - Bloqueia vazamentos */
+/* --- 1. ESTRUTURA GLOBAL E CENÁRIOS --- */
+
 .prologo-viewport {
   width: 100vw;
   height: 100vh;
   position: relative;
   overflow: hidden;
-  background-color: #111; /* Fundo de segurança preto */
+  background-color: #111;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Cenário Principal: Carrega a estrada em zigue-zague quadriculada */
 .prologo-cenario {
   width: 100%;
   height: 100%;
-  max-width: 1920px; /* Limite de segurança para telas ultra-wide */
+  max-width: 1920px;
   max-height: 1080px;
   background-image: url('/reino-do-tabuleiro-landscape.png');
   background-size: cover;
@@ -29,12 +29,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Empurra a caixa de texto para o rodapé */
+  justify-content: flex-end;
   align-items: center;
-  padding-bottom: 4vh; /* Distância de segurança da borda inferior */
+  padding-bottom: 4vh;
 }
 
-/* ⚙️ HUD: Botão de Menu Flutuante */
+/* --- 2. RELAÇÃO DE INTERFACES PERSISTENTES (HUD & SIDEBAR) --- */
+
 .hud-menu-btn {
   position: absolute;
   top: 3vh;
@@ -49,7 +50,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 20; /* Fica acima do cenário */
+  z-index: 20;
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
@@ -58,7 +59,6 @@
   background: rgba(255, 255, 255, 0.4);
 }
 
-/* 📜 Pergaminho Sidebar (Aside) */
 .pergaminho-sidebar {
   position: absolute;
   top: 0;
@@ -68,7 +68,7 @@
   background: linear-gradient(135deg, #f5e6cc 0%, #e6d3b3 100%);
   border-right: 5px solid #8b5a2b;
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
-  z-index: 30; /* Camada mais alta de todas */
+  z-index: 30;
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
@@ -94,7 +94,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-top: auto; /* Empurra os botões para o fim do pergaminho */
+  margin-top: auto;
 }
 
 .sidebar-nav button {
@@ -112,80 +112,112 @@
   background: #66411e;
 }
 
-/* 🦉 Sprite da Professora Coruja */
+/* --- 3. ATORES E ANIMAÇÕES VIVAS (SPRITES) --- */
+
 .sprite-kabure {
   position: absolute;
-  left: 1.8vw;
-  bottom: 17.5vh;
-  height: 38vh;
+  left: 2vw;
+  bottom: 4vh;
+  height: 35vh;
   object-fit: contain;
   filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.4));
-  z-index: 15; 
-  
-  /* Injeção da Animação de Respiração (Opção A) */
-  animation: respirarKabure 1s infinite ease-in-out;
+  z-index: 16; 
+  animation: respirarKabure 1.5s infinite ease-in-out;
   transform-origin: bottom center; 
+  pointer-events: none;
 }
 
-/* 🎭 Animação de Respiração Sutil (Idle Animation) */
-@keyframes respirarKabure {
-  0% {
-    transform: scaleX(1) scaleY(1);
-  }
-  50% {
-    transform: scaleX(1.02) scaleY(1.04);
-  }
-  100% {
-    transform: scaleX(1) scaleY(1);
-  }
-}
-
-/* 📦 Caixa de Diálogo Clássica (Estilo RPG) */
-.caixa-dialogo {
-  width: 85vw;
+.sprite-kabure-narradora {
+  position: absolute;
+  left: 0.5vw;
+  bottom: 10vh;
   height: 20vh;
+  object-fit: contain;
+  filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.4));
+  z-index: 16;
+  animation: respirarKabure 1.5s infinite ease-in-out;
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+
+@keyframes respirarKabure {
+  0%, 100% { transform: scaleX(1) scaleY(1); }
+  50% { transform: scaleX(1.02) scaleY(1.04); }
+}
+
+/* --- 4. SISTEMA DE DIÁLOGO E CAIXAS ESTILO RODAPÉ RPG --- */
+
+.historia-lore-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.caixa-dialogo, .caixa-historia {
+  position: absolute;
+  bottom: 4vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: 22vh;
   min-height: 120px;
   background: linear-gradient(to bottom, #fcf5e8 0%, #f3e4cb 100%);
   border: 4px solid #5c3a21;
   border-radius: 12px;
   box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
-  padding: 2vh 4vw;
-  position: relative;
+  padding: 2.5vh 4vw;
   box-sizing: border-box;
-  z-index: 10;
+  z-index: 15;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-/* Etiqueta com o Nome da Coruja */
-.caixa-dialogo-titulo {
+.caixa-dialogo-titulo, .caixa-historia-header {
   position: absolute;
-  top: -2.5vh;
+  top: -2.2vh;
   left: 3vw;
   background: #5c3a21;
   color: #fcf5e8;
   font-family: sans-serif;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
   padding: 4px 16px;
   border-radius: 6px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  margin: 0;
 }
 
-/* Texto da fala corrente */
-.caixa-dialogo-texto {
+.caixa-dialogo-texto, .caixa-historia-texto {
   color: #2b1a0d;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 500;
   line-height: 1.4;
   margin: 0;
-  padding-right: 6vw; /* Abre espaço para o botão "Próximo" não atropelar o texto */
+  padding-right: 8vw;
 }
 
-/* ▶ Botão Avançar dentro da Caixa */
-.caixa-dialogo-next {
+.caixa-historia-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.progresso-paginas {
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  color: #5c3a21;
+  font-weight: bold;
+}
+
+.caixa-dialogo-next, .btn-avançar-historia {
   position: absolute;
   right: 2vw;
   bottom: 2vh;
@@ -199,15 +231,241 @@
   font-size: 1rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   animation: pulsarBotao 1.5s infinite ease-in-out;
+  z-index: 20;
 }
 
-.caixa-dialogo-next:hover {
+.caixa-dialogo-next:hover, .btn-avançar-historia:hover {
   background: #5c3a21;
 }
 
-/* Animação de Pulsar para atrair o clique da criança */
 @keyframes pulsarBotao {
-  0% { transform: scale(1); }
+  0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
-  100% { transform: scale(1); }
+}
+
+/* --- 5. MAPA INTERATIVO E TRILHA DE CÍRCULOS (HUD) --- */
+
+.mapa-estrada-hud {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.instrucao-topo-mapa {
+  position: absolute;
+  top: 4vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 13, 46, 0.85);
+  border: 2px solid #5820c0;
+  color: #fff;
+  padding: 1.5vh 4vw;
+  border-radius: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px rgba(88, 32, 192, 0.6);
+  z-index: 5;
+}
+
+.circulo-rota {
+  position: absolute;
+  width: 7vh;
+  height: 7vh;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 4;
+}
+
+.circulo-rota.liberado {
+  background: linear-gradient(135deg, #a8831e, #61926e);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.circulo-rota.liberado:hover {
+  transform: scale(1.15);
+}
+
+.circulo-rota.bloqueado {
+  background: #333;
+  border-color: #666;
+  color: #888;
+  font-size: 0.9rem;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.circulo-rota.piscante {
+  background: linear-gradient(135deg, #72a735, #ac7b32);
+  animation: pulsarBrilhoMagico 1.5s infinite ease-in-out;
+  border-color: #fff;
+}
+
+@keyframes pulsarBrilhoMagico {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(168, 166, 41, 0.7), 0 0 0 0 rgba(61, 136, 46, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 6px rgba(226, 157, 9, 0.4), 0 0 15px 10px rgba(43, 139, 4, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 0, 127, 0), 0 0 0 0 rgba(88, 32, 192, 0);
+  }
+}
+
+/* --- 6. ELEMENTOS GRÁFICOS DINÂMICOS (TABULEIRO DE DEMONSTRAÇÃO) --- */
+
+.tabuleiro-container-central {
+  position: absolute;
+  top: 7vh; /* Ajustado sutilmente para centralizar o novo tamanho de caixa */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* 🌟 AJUSTE AQUI O TAMANHO TOTAL DA CAIXA (GRADE + MOLDURAS) */
+  width: 49vh;  
+  height: 49vh; 
+  background: #5c3a21; 
+  
+  /* 🌟 AJUSTE AQUI A ESPESSURA DAS QUATRO BORDAS DA MOLDURA DE MADEIRA */
+  padding-top: 3.5vh;    /* Borda Superior */
+  padding-right: 3.5vh;  /* Borda Direita */
+  padding-bottom: 3.5vh; /* Borda Inferior */
+  padding-left: 3.5vh;   /* Borda Esquerda */
+  
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.grade-tabuleiro-pure {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  width: 100%;
+  height: 100%;
+  position: relative; 
+}
+
+.casa-tabuleiro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.casa-tabuleiro.clara { background-color: #f0d9b5; }
+.casa-tabuleiro.escura { background-color: #b58863; }
+
+/* 🌟 Réguas Estilizadas para as Coordenadas na Madeira */
+.regua-coordenadas-lateral {
+  position: absolute;
+  /* 🌟 AJUSTE AQUI O AFSTAMENTO DAS LETRAS DA BORDA ESQUERDA */
+  left: -2.6vh; 
+  top: 0;
+  width: 2vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: none;
+}
+
+.regua-coordenadas-inferior {
+  position: absolute;
+  /* 🌟 AJUSTE AQUI O AFASTAMENTO DOS NÚMEROS DA BORDA INFERIOR */
+  bottom: -2.6vh; 
+  left: 0;
+  width: 100%;
+  height: 2vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: none;
+}
+
+.caractere-coordenada-moldura {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fcf5e8; 
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  opacity: 0; 
+  transition: opacity 0.4s ease-in-out;
+}
+
+.tabuleiro-container-central.mostrar-legendas .caractere-coordenada-moldura {
+  opacity: 1;
+}
+
+.label-coordenada-sutil {
+  display: none !important;
+}
+
+.casa-tabuleiro.piscando-canto {
+  background-color: #ff007f !important;
+  animation: pulsoCasaCanto 1s infinite ease-in-out;
+  box-shadow: inset 0 0 15px #fff;
+  z-index: 6;
+}
+
+@keyframes pulsoCasaCanto {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.btn-passo.ativo {
+  background: #8b5a2b;
+  color: white;
+  border: 2px solid #5c3a21;
+  padding: 1.5vh 3vw;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.btn-passo.ativo:hover { transform: scale(1.05); }
+
+.casa-tabuleiro.linha-vento-vertical {
+  background-color: #3a86ff !important;
+  box-shadow: inset 0 0 10px #fff;
+  transition: background-color 0.3s ease;
+}
+
+.casa-tabuleiro.linha-terra-horizontal {
+  background-color: #fb5607 !important;
+  box-shadow: inset 0 0 10px #fff;
+  transition: background-color 0.3s ease;
+}
+
+.casa-tabuleiro.escada-diagonal-inclinada {
+  background-color: #8338ec !important;
+  box-shadow: inset 0 0 12px #fff;
+  transition: background-color 0.3s ease;
+}
+
+.casa-tabuleiro.escada-diagonal-clara {
+  background-color: #ffbe0b !important; 
+  box-shadow: inset 0 0 12px #fff;
+}
+
+.casa-tabuleiro.escada-diagonal-escura {
+  background-color: #9d4edd !important; 
+  box-shadow: inset 0 0 12px #fff;
 }

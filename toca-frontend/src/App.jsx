@@ -40,8 +40,13 @@ function App() {
         </button>
       )}
 
-      {/* Menu Lateral Persistente */}
-      {menuAberto && <PergaminhoSidebar onVoltarHome={irParaHome} />}
+      {/* Menu Lateral Persistente com a trava de fechar injetada */}
+      {menuAberto && (
+        <PergaminhoSidebar 
+          onVoltarHome={irParaHome} 
+          onFechar={() => setMenuAberto(false)} 
+        />
+      )}
 
       {/* Máquina de Estados de Renderização de Telas */}
       {telaAtiva === 'HOME' && (
