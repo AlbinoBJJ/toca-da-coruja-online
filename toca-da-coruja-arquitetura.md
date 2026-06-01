@@ -1,97 +1,129 @@
-Perfeito, Lucas! Vamos atualizar o nosso arquivo .md de especificação para registrar essa guinada fantástica na arquitetura (Custo Zero, Google Planilhas, Stockfish local e interpretação pedagógica com IA). Como você pediu, nada de cuspir código de implementação ainda. Vamos primeiro atualizar a nossa Bíblia do projeto e, logo em seguida, dar o pontapé inicial na nossa máquina de estados do React.
+# 🦉 Toca da Coruja - Documento de Engenharia & Lore v2.0
 
-Aqui está o seu arquivo de documentação totalmente atualizado e revisado. Copie e salve por cima do seu toca-da-coruja-arquitetura.md:
+Este documento é o Guia Supremo de Desenvolvimento do projeto. Ele une a arquitetura técnica de software com o progresso atual do projeto, o enredo lúdico (Lore), o planejamento de monetização B2B para escolas e as regras específicas dos minijogos.
 
-🦉 Toca da Coruja - Documento de Engenharia & Lore v1.5
-Este documento é o Guia Supremo de Desenvolvimento. Ele une a arquitetura técnica do software com o progresso atual do projeto, o enredo lúdico (Lore) e as regras específicas dos minijogos.
+---
 
-🏗️ 1. Decisão de Arquitetura (Estratégia Serverless / Custo Zero)
-Front-end: React (Gerenciado via Vite) hospedado publicamente no GitHub Pages.
+## 🏗️ 1. Decisão de Arquitetura e Estratégia de Infraestrutura
 
-Back-end & Banco de Dados: Google Planilhas (Google Sheets) via Google Apps Script (Ambiente JavaScript seguro e isolado, operando como API REST sem custos de servidor).
+*   **Front-end (Ativo):** React (Gerenciado via Vite) hospedado publicamente no GitHub Pages.
+*   **Back-end & Autenticação (Segurança Escolar):** API de Autenticação Simples hospedada em servidor leve com banco de dados relacional (PostgreSQL ou SQLite). Esta camada substitui o Google Planilhas para evitar travamentos de requisições simultâneas (*Rate Limiting*) e vulnerabilidades de segurança (exposição de chaves de API no front-end).
+*   **Mecanismo de Análise Técnica:** Engine Stockfish.js rodando 100% no lado do cliente (Client-side Web Workers) para validação matemática de erros e acertos táticos.
+*   **Camada de Interpretação Pedagógica:** API de IA (OpenAI/Anthropic) consumida de forma segura via backend para traduzir relatórios brutos do Stockfish em balões de diálogos lúdicos da professora Coruja Kaburé-Iwa.
+*   **Persistência de Dados Local:** LocalStorage & IndexedDB para salvamento imediato do estado do jogo (Modo Offline), enviando os pacotes para a API em segundo plano.
 
-Mecanismo de Análise Técnica: Engine Stockfish.js rodando 100% no lado do cliente (Client-side Web Workers) para validação matemática de erros e acertos táticos sem onerar processamento em nuvem.
+---
 
-Camada de Interpretação Pedagógica: API de IA (OpenAI/Anthropic) consumida de forma segura via Apps Script para traduzir relatórios brutos do Stockfish em balões de diálogos lúdicos da professora Coruja.
+## 💰 2. Modelo de Negócios & Monetização (B2B Escolas Particulares)
 
-Persistência de Dados Local: LocalStorage & IndexedDB para salvamento imediato do estado do jogo (Modo Offline), evitando travamentos de interface e despachando os pacotes para a planilha em segundo plano.
+*   **Controle de Acesso Automatizado (Sistema de Tokens):** Para a venda do serviço para escolas particulares sem anúncios (Modelo Premium), o sistema gerará lotes de códigos alfanuméricos únicos (ex: `TOCA-ESC1-XYZ9`). 
+*   **Validação Segura:** No primeiro acesso do aluno, o aplicativo valida o token junto à API backend, marcando o dispositivo local como "Premium" de forma automática e segura, sem risco de manipulação externa.
+*   **Roadmap de Distribuição Mobile (Futuro):** 
+    *   **Abordagem Inicial (PWA):** Configuração de `manifest.json` e Service Workers para permitir a instalação direta do site no celular do aluno (ícone na tela e tela cheia), com custo zero de publicação.
+    *   **Abordagem Comercial (Capacitor.js):** Envelopamento da pasta compilada (`dist`) em uma WebView nativa para geração do arquivo `.aab` e publicação oficial na Google Play Store (Taxa única de U$ 25 e cumprimento do requisito de 12 testadores por 14 dias).
 
-📐 2. Diretrizes Estritas de UI/UX e Código Clean
-Orientação Exclusiva: O Web App é travado e projetado exclusivamente para o modo Landscape (Horizontal), tanto para Desktop quanto para Mobile.
+---
 
-Bloqueio de Rolagem (Zero Overflow): É terminantemente proibido o surgimento de barras de rolagem laterais ou verticais na interface do jogo.
+## 📐 3. Diretrizes Estritas de UI/UX e Código Clean
 
-Dimensionamento: O aplicativo deve rodar em uma proporção de tela cheia fixa (Viewport de 100vh e 100vw, com trava proporcional interna de 16:9).
+*   **Orientação Exclusiva:** O Web App é travado e projetado exclusivamente para o modo Landscape (Horizontal), tanto para Desktop quanto para Mobile.
+*   **Bloqueio de Rolagem (Zero Overflow):** É terminantemente proibido o surgimento de barras de rolagem laterais ou verticais na interface do jogo.
+*   **Dimensionamento:** O aplicativo deve rodar em uma proporção de tela cheia fixa (Viewport de 100vh e 100vw, com trava proporcional interna de 16:9 através de `.home-container`).
+*   **Segregação de Responsabilidades:** Arquivos JSX devem conter apenas estruturas lógicas e marcação operacional. Toda e qualquer estilização visual deve residir em arquivos .css isolados, proibindo o uso de propriedades de estilo *inline*.
 
-Segregação de Responsabilidades: Arquivos JSX devem conter apenas estruturas lógicas e marcação operacional. Toda e qualquer estilização visual deve residir em arquivos .css isolados dentro do diretório de estilos, proibindo o uso de propriedades de estilo inline no React.
+---
 
-Segurança e Privacidade Infantil: É terminantemente proibido coletar ou armazenar nomes reais, e-mails ou dados sensíveis de identificação. O sistema operará estritamente através de apelidos lúdicos e chaves codificadas (id_usuario).
+## 📂 4. Estrutura de Diretórios Atualizada
 
-📂 3. Estrutura de Diretórios Atualizada
-Plaintext
+```plaintext
 Toca-da-Coruja-Raiz/
-├── toca-backend/         # Ecossistema Django (API - Pausado/Substituído pelo Sheets)
+├── toca-backend/         # Estrutura API de Autenticação, Banco de Dados e Vouchers (Python)
 ├── toca-frontend/        # Ecossistema React (Vite - ATIVO)
 │   ├── node_modules/     # Dependências do JavaScript
-│   ├── public/           # Ativos estáticos globais (Imagens da Home aqui)
+│   ├── public/           # Ativos estáticos globais (Imagens da Home, Hero e Cenários)
 │   ├── src/              # Componentes e lógica do React
-│   │   ├── styles/       # Camada de estilização isolada (Home.css)
-│   │   ├── App.jsx       # Componente estrutural limpo e máquina de estados
+│   │   ├── components/   # Componentes Modulares (HomeScreen, PrologoScreen, etc.)
+│   │   ├── styles/       # Camada de estilização isolada (Home.css, Prologo.css)
+│   │   ├── App.jsx       # Componente estrutural limpo e máquina de estados (Maestro)
 │   │   └── main.jsx      # Inicializador do ecossistema
 │   └── index.html        # Ponto de ancoragem do Front-end
-├── assets/               # Pasta de build de produção do GH Pages (Raiz)
-├── index.html            # Arquivo de produção do GH Pages (Raiz)
-└── home-hero.png         # Imagem de produção do GH Pages (Raiz)
-🧭 4. Diário de Bordo do Projeto (Status de Desenvolvimento)
+🧭 5. Diário de Bordo do Projeto (Status de Desenvolvimento)
 ✅ Concluído (O que já fizemos):
-Setup e Limpeza de Ambiente: Estruturação isolada do ecossistema React via Vite.
+Setup estrutural e limpeza do ambiente React via Vite.
 
-Refatoração para Clean Architecture: Isolamento da física e do mapeamento de cliques do CSS (Home.css) da lógica do componente React (App.jsx), com reset estrutural que sanou as micro-barras de rolagem.
+Desenvolvimento do Orquestrador Principal (App.jsx Versão 2.0) atuando como a Máquina de Estados de navegação global.
 
-Deploy Contínuo: Configuração do repositório remoto no GitHub e publicação bem-sucedida do MVP na nuvem através do GitHub Pages.
+Isolamento do CSS da Home com controle responsivo dos gatilhos invisíveis em cima da arte de fundo.
 
-Pivotação de Infraestrutura (Custo R$ 0): Substituição do servidor tradicional (Django/PostgreSQL) pelo modelo Serverless usando Google Planilhas (via Apps Script) integrado ao processamento local do Stockfish.js.
+Configuração do pipeline de deploy contínuo via gh-pages enviando a pasta dist com sucesso para a nuvem.
 
 ⏳ Em Andamento (O que estamos fazendo AGORA):
-Gerenciador de Telas: Implementação do controle de estados no App.jsx para transição reativa (Home -> Prólogo).
+Expansão e detalhamento das etapas da caminhada do Prólogo baseadas na literatura pedagógica de xadrez adaptada para a narrativa lúdica do jogo.
 
-📋 Próximos Passos (O que faremos a seguir):
-Criar a interface e a estrutura de vetores de diálogos para a apresentação narrativa da Coruja Kaburé-Iwa (Prólogo).
+🗺️ 6. Especificação Detalhada do Prólogo: A Estrada Rumo ao Castelo
+O Prólogo deixa de ser uma tela estática e passa a ser uma caminhada interativa dividida em 9 passos (botões). Cada passo representa uma parada na Estrada Quadriculada guiada pela Coruja Kaburé-Iwa, adaptando os conceitos técnicos do livro Xadrez para Todos.
 
-Mapear o script de integração com as 4 abas do Google Planilhas (cadastro_usuarios, progresso_fases, historico_atividades, historico_partidas_ia).
+🔘 Botão 1: Apresentação do Jogo & Lore do Reino
+Base Teórica: Definição do xadrez, número de casas (64), alternância de lances, início pelas brancas, os 6 tipos de peças (16 para cada jogador) e o objetivo final (Xeque-mate). Menção à história de 1.500 anos do jogo.
 
-Desenhar a estrada em zigue-zague com exercícios de pintura tática e o mini jogo de coordenadas.
+Adaptação Lúdica (Lore): Kaburé-Iwa explica que o Reino do Tabuleiro é governado por dois reis vizinhos (o Rei das Terras Claras e o Rei das Terras Escuras) que vivem em uma disputa pacífica há 1.500 anos. Eles dividem um campo mágico de 64 territórios e seguem uma regra ancestral rígida: nenhum exército joga duas vezes seguidas, e as forças Claras sempre dão o passo inicial. O jogador assume o papel de um jovem conselheiro tático convocado para restabelecer a ordem usando as 16 forças de um exército.
 
-Acoplar o motor do Stockfish.js no motor visual do Sumô dos Reis.
+🔘 Botão 2: O Campo de Jogo (O Tabuleiro)
+Base Teórica: Tabuleiro quadrado constituído de 64 casas (32 claras e 32 escuras). Regra fundamental: a casa no canto inferior direito de cada jogador deve ser obrigatoriamente de cor branca. Diferenciação com o jogo de Damas (que não utiliza as 64 casas ativamente).
 
-📊 5. Modelagem do Banco de Dados Relacional (Google Sheets)
-Aba 1: cadastro_usuarios -> Armazena id_usuario, apelido lúdico, data_cadastro e dispositivo.
+Crítica Metodológica Incorporada: O livro compara xadrez e damas com vôlei e basquete (mesmo espaço, regras diferentes). Corrigimos essa analogia: o xadrez e a dama assemelham-se a Futsal e Handebol. Eles compartilham o mesmo espaço físico básico (o quadrado do tabuleiro), porém o desenho de suas demarcações internas e o uso do espaço são completamente diferentes — o xadrez exige o domínio absoluto de todas as 64 casas, enquanto a dama restringe o movimento.
 
-Aba 2: progresso_fases -> Estado persistente do "Save Game" (id_usuario, fase_atual, passo_atual, ultima_atualizacao).
+Adaptação Lúdica: Kaburé-Iwa mostra a terra quadriculada e ensina o "Truque da Mão Direita": a casa do canto direito de onde você senta sempre deve brilhar na cor clara, ou a magia do campo é quebrada.
 
-Aba 3: historico_atividades -> Registro geral de métricas de quebra-cabeças (categoria, id_activity, resultado, pontuacao, tempo_segundos, erros_cometidos).
+🔘 Botão 3: As Três Linhas (Coluna, Fileira e Diagonal)
+Base Teórica: As três linhas retas do tabuleiro são os caminhos de movimento das peças.
 
-Aba 4: historico_partidas_ia -> O diário tático do jogador (id_partida, historico_lances em PGN, analise_stockfish bruta e o feedback_pedagogico_ia).
+Coluna (Vertical): Conjunto de 8 casas na vertical. O tabuleiro tem 8 colunas.
 
-📚 6. Enredo Lúdico (Lore) e Fluxo Pedagógico
-🎬 Prólogo: O Chamado na Estrada
-A jornada começa com a apresentação da nossa professora, a coruja Kaburé-Iwa. Ela surge para o jogador com uma missão urgente: ir até o castelo do rei para descobrir o que aconteceu por lá. No caminho, ela introduz o xadrez utilizando como base metodológica a literatura de Xadrez para Todos (James Mann de Toledo e Juliana Kyoko Kamada).
+Fileira (Horizontal): Conjunto de 8 casas na horizontal. O tabuleiro tem 8 fileiras.
 
-🗺️ Fase 1: A Estrada Quadriculada (Alfabetização)
-Ao entrar na estrada que leva ao castelo, o jogador depara-se com um caminho completamente quadriculado. Kaburé-Iwa apresenta formalmente o tabuleiro de xadrez.
+Diagonal (Inclinada): Duas ou mais casas dispostas em linha inclinada (como degraus de uma escada). Existem 26 diagonais no total (13 brancas e 13 pretas).
 
-Exercícios Didáticos: Reconhecimento espacial através de desafios práticos identificando Colunas (verticais), Fileiras (horizontais), Diagonais e nomes das casas.
+Adaptação Lúdica: Kaburé-Iwa conjura linhas de luz na estrada. As Colunas são as "Torres Verticais de Vento", as Fileiras são as "Linhas Horizontais de Terra" e as Diagonais são os "Degraus Invisíveis de Escada" que exigem caminhar sem nunca trocar a cor do chão sob os pés.
 
-Treino de Coordenadas: Um minijogo de velocidade baseado no sistema de coordenadas do Lichess.org ("Caça às Casas") para fixar os endereços das 64 casas.
+🔘 Botão 4: A Linguagem Secreta (Nome das Colunas e Fileiras)
+Base Teórica: Identificação das linhas do tabuleiro. As colunas são batizadas com letras minúsculas de a até h. Os andares (fileiras) são numerados de 1 a 8.
 
-🎮 7. Especificações de Minijogos Customizados (Motores Próprios + Engine)
-🐻 Minijogo 1: O Sumô dos Reis (Oposição e Movimento do Rei)
-Mecânica: Ambos os lados controlam apenas a peça do Rei. O objetivo é ganhar a Oposição (forçar o recuo do adversário).
+Adaptação Lúdica: A Coruja revela que para enviar comandos no Reino, o jogador precisa falar a língua dos escribas. Cada estrada vertical ganhou a assinatura de uma letra sagrada de 'a' a 'h', e cada andar horizontal recebeu um número de poder de 1 a 8.
 
-Integração Híbrida: O Stockfish analisa a precisão posicional do Rei do jogador a cada lance. Se houver desvio tático, a linha de erro é capturada e enviada para a IA traduzir pedagogicamente na voz da Coruja.
+🔘 Botão 5: Desafio Tático - Canhões do Reino (Treino de Verticais e Horizontais)
+Mecânica do Mini-Jogo (Sorteador de Exercícios): Um gerador aleatório solicita que o jogador interaja com uma linha específica (Ex: "Ative a Coluna d!" ou "Defenda a Fileira 5!").
 
-🛠️ 8. Comandos Úteis de Inicialização
-Iniciar o Front-end React (Terminal 1)
+Ideia de Gameplay Retida: Um sistema baseado em canhões. Para fixar as Verticais (Colunas), alvos passam voando pelo céu e a criança precisa disparar canhões verticais posicionados na base. Para fixar as Horizontais (Fileiras), o sentido do jogo muda/inverte temporariamente, exigindo disparos ou varreduras horizontais na fileira sorteada, garantindo que o conceito de linha seja memorizado através da ação sem descaracterizar o avanço pela estrada.
+
+🔘 Botão 6: O Nome das Casas (O Plano Cartesiano)
+Base Teórica: Coordenadas das 64 casas. Cada casa possui um nome único universal formado pela junção da letra de sua coluna com o número de sua fileira (Ex: a1, c4, e7, h3).
+
+Adaptação Lúdica: Kaburé-Iwa ensina a cruzar os caminhos para descobrir a identidade secreta de cada pedaço de chão. Se você pisar na Coluna e e subir até a Fileira 4, você estará pisando na energia sagrada da casa e4.
+
+🔘 Botão 7: Mini-Jogo - O Jardim de Flores das Coordenadas
+Mecânica do Mini-Jogo: O tabuleiro se transforma em um belo jardim medieval onde cada casa é um canteiro/vaso de flores vazio. O jogo roda um sorteador automático de coordenadas (Ex: "Plante uma rosa em g6!").
+
+Gamificação & Pontuação: O jogador deve clicar na casa exata para plantar a flor no canteiro certo. Possui um cronômetro (timer) integrado e um contador de pontuação. Acertos consecutivos geram multiplicadores de bônus de pontos (Combo Streak), incentivando a velocidade e o reconhecimento instantâneo dos planos cartesianos.
+
+🔘 Botão 8: Desafio Tático - Pintura de Diagonais
+Mecânica do Exercício: O sistema roda dois tipos de sorteios aleatórios para consolidar o conceito de inclinação:
+
+Sorteio Centralizado: Escolhe uma das 36 casas internas (fora da borda extrema) e pede para a criança pintar uma diagonal completa que passe por aquela casa de referência.
+
+Sorteio de Borda: Escolhe uma das 28 casas posicionadas estritamente nas bordas do tabuleiro e exige que a criança trace a diagonal que nasce a partir daquele ponto de partida específico.
+
+🔘 Botão 9: O Coração do Campo (Pequeno Centro, Grande Centro e Borda)
+Base Teórica: Divisão estratégica do tabuleiro em Pequeno Centro (d4, e4, d5, e5), Grande Centro (o anel ao redor do centro) e a Borda (periferia do tabuleiro).
+
+Mecânica do Mini-Jogo (Futebol de Tabuleiro): É posicionado um gol acima das casas d8 e e8. Uma bola de futebol surge aleatoriamente em diferentes posições do tabuleiro. O jogador deve arrastar a bola (swipe) em direção ao gol. Através da experiência prática de física do minijogo, a criança notará de forma intuitiva que chutar a bola a partir das casas do Pequeno e Grande Centro dá um ângulo muito mais fácil e direto para o gol, enquanto tentar finalizar estando preso nas casas da Borda reduz drasticamente as chances de sucesso.
+
+🛠. 7. Comandos Úteis de Inicialização
 Bash
+# Iniciar o ambiente local de desenvolvimento do React
 cd toca-frontend
 npm run dev
+
+# Compilar e publicar a versão de produção atualizada no GitHub Pages
+cd toca-frontend
+npm run deploy
